@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send OTP</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+</head>
+<body>
+    <form id="otp-form">
+        <label for="email">Email:</label>
+        <input type="email" id="email" name="email" required><br><br>
+        <button type="submit">Send OTP</button>
+    </form>
+
+    <script>
+        function generateOTP(length) {
+            var numbers = "0123456789";
+            var OTP = "";
+            for (var i = 0; i < length; i++) {
+                OTP += numbers.charAt(Math.floor(Math.random() * numbers.length));
+            }
+            return OTP;
+        }
+
+        document.getElementById('otp-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var email = document.getElementById('email').value;
+            var otp = generateOTP(6); // Generate a 6-digit OTP
+
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "teriyakibot@teriyaki.org",
+                Password: "7832B1182785956532CBAC3D3C8FF3D51E43",
+                To: to,
+                From: "vyasrudransh2@gmail.com",
+                Subject: "Your OTP",
+                Body: "Your OTP is: " + otp
+            }).then(function(message) {
+                alert("OTP sent successfully");
+            }).catch(function(error) {
+                alert("Failed to send OTP. Please try again.");
+            });
+        });
+    </script>
+</body>
+</html>

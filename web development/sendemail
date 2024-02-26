@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Send Email</title>
+    <script src="https://smtpjs.com/v3/smtp.js"></script>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Le-U38pAAAAAAwbI7a9GeaFIaz4hpF6UCf4qiTp"></script>
+</head>
+<body>
+    <h1>Send Email</h1>
+    <form id="email-form">
+        <label for="to">To:</label>
+        <input type="text" id="to" name="to" required><br><br>
+        <label for="subject">Subject:</label>
+        <input type="text" id="subject" name="subject" required><br><br>
+        <label for="body">Body:</label><br>
+        <textarea id="body" name="body" rows="4" cols="50" required></textarea><br><br>
+        <button type="submit">Send Email</button>
+    </form>
+
+    <script>
+        document.getElementById('email-form').addEventListener('submit', function(event) {
+            event.preventDefault();
+            var to = document.getElementById('to').value;
+            var subject = document.getElementById('subject').value;
+            var body = document.getElementById('body').value;
+
+            Email.send({
+                Host: "smtp.elasticemail.com",
+                Username: "teriyakibot@teriyaki.org",
+                Password: "7832B1182785956532CBAC3D3C8FF3D51E43",
+                To: to,
+                From: "vyasrudransh2@gmail.com",
+                Subject: subject,
+                Body: body
+            }).then(function(message) {
+                alert("Email sent successfully");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,25 @@
+<head>
+    <title>Sign Up</title>
+    <link rel="stylesheet" type="text/css" href="styles.css">
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Le-U38pAAAAAAwbI7a9GeaFIaz4hpF6UCf4qiTp"></script>
+    <script src="scripts.js"></script>
+</head>
+<body>
+    <div class="container">
+        <h1>Sign Up</h1>
+        <form id="signup-form" method="POST" action="signup.php">
+            <label for="username">Username:</label>
+            <input type="text" id="username" name="username" required><br><br>
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+            <label for="password">Password:</label>
+            <input type="password" id="password" name="password" required><br><br>
+            <button type="submit" id="submit-btn">Sign Up</button>
+        </form>
+        <div class="login-link">
+            <p>Already have an account? <a href="webdevelopment.html">Sign In</a></p>
+        </div>
+    </div>
+</body>
+</html>

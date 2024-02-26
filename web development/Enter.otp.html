@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Enter OTP</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+    <script src="https://www.google.com/recaptcha/enterprise.js?render=6Le-U38pAAAAAAwbI7a9GeaFIaz4hpF6UCf4qiTp"></script>
+    <script src="forgotpassword.js" defer></script>
+</head>
+    <div class="container">
+        <h1>Enter OTP</h1>
+        <form id="otp-form">
+            <label for="otp">OTP:</label>
+            <input type="text" id="otp" name="otp" required><br><br>
+            <button type="submit" id="verify-otp-btn">Verify OTP</button>
+        </form>
+    </div>
+    <script>
+        $(document).ready(function() {
+            $("#otp-form").submit(function(e) {
+                e.preventDefault();
+                var otp = $("#otp").val();
+                $.ajax({
+                    url: "verify_otp.php",
+                    method: "POST",
+                    data: { otp: otp },
+                    success: function(response) {
+                        if (response.trim() === "success") {
+                            alert("OTP verified successfully");
+                            // Redirect to password reset page or perform desired action
+                        } else {
+                            alert("Invalid OTP. Please try again.");
+                        }
+                    },
+                    error: function() {
+                        alert("An error occurred. Please try again.");
+                    }
+                });
+            });
+        });
+    </script>
+</body>
+</html>
+
